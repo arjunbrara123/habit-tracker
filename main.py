@@ -1,11 +1,12 @@
 import requests
+import os
 from datetime import datetime
 
 PIXELA_USERNAME = "arjun"
 PIXELA_API_NEW_USER_URL = "https://pixe.la/v1/users/"
 PIXELA_API_NEW_GRAPH_URL = "https://pixe.la/v1/users/" + PIXELA_USERNAME + "/graphs"
 PIXELA_API_GRAPH_URL = "https://pixe.la/v1/users/" + PIXELA_USERNAME + "/graphs/pythongraph"
-PIXELA_TOKEN = "arjun234"
+PIXELA_TOKEN = os.environ['PIXELA_TOKEN']
 
 pixela_params = {
     "token": PIXELA_TOKEN,
@@ -39,8 +40,8 @@ PIXELA_API_GRAPH_DAY_URL = PIXELA_API_GRAPH_URL + "/" + today.strftime("%Y%m%d")
 #pixela_data = requests.post(url=PIXELA_API_NEW_USER_URL, json=pixela_params)
 #pixela_data = requests.post(url=PIXELA_API_NEW_GRAPH_URL, json=graph_config, headers=headers)
 #pixela_response = requests.post(url=PIXELA_API_GRAPH_URL, json=pixel_update, headers=headers)
-#pixela_response = requests.put(url=PIXELA_API_GRAPH_DAY_URL, json=pixel_update, headers=headers)
-pixela_response = requests.delete(url=PIXELA_API_GRAPH_DAY_URL, headers=headers)
+pixela_response = requests.put(url=PIXELA_API_GRAPH_DAY_URL, json=pixel_update, headers=headers)
+#pixela_response = requests.delete(url=PIXELA_API_GRAPH_DAY_URL, headers=headers)
 
 #print(pixela_data.json())
 print(pixela_response.json())
